@@ -56,7 +56,7 @@ const followersArray = [];
 */
 
 const cardCreator = (user) => {
-  
+
   // Create Elements
   const card = document.createElement('div');
   const userImg = document.createElement('img');
@@ -95,10 +95,15 @@ const cardCreator = (user) => {
   cardInfo.appendChild(bio);
 
   profile.appendChild(profLink);
+  
 
+  // Set Class Names
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  realName.classList.add('name');
+  userName.classList.add('username');
 
-
-
+  
 
 
 
