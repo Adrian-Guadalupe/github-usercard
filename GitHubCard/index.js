@@ -55,9 +55,9 @@ const followersArray = [];
 
 */
 
-const cardCreator = (obj) => {
+const cardCreator = (user) => {
   // Create Elements
-  const newCard = document.createElement('div');
+  const card = document.createElement('div');
   const userImg = document.createElement('img');
   const cardInfo = document.createElement('div');
   const realName = document.createElement('h3');
@@ -69,7 +69,20 @@ const cardCreator = (obj) => {
   const following = document.createElement('p');
   const bio = document.createElement('p');
 
-  // Element textContent
+  // Element Content
+  userImg.src = user.avatar_url;
+  realName.textContent = `${user.name}`;
+  userName.textContent = `${user.login}`;
+  location.textContent = `${user.location}`;
+  profLink.textContent = `${user.html_url}`;
+  followers.textContent = `${user.followers}`;
+  following.textContent = `${user.following}`;
+  bio.textContent =`${user.bio}`;
+
+  // Nesting of Elements
+  card.appendChild(userImg);
+
+
 
 
 
