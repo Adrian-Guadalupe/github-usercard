@@ -3,6 +3,15 @@
            https://api.github.com/users/<your name>
 */
 
+axios
+  .get('https://api.github.com/users/Adrian-Guadalupe')
+  .then(responce => {
+    console.log(responce);
+  })
+  .catch(err => {
+    console.log('data not returned', err)
+  })
+  
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -46,6 +55,28 @@ const followersArray = [];
 
 */
 
+const cardCreator = (obj) => {
+  // Create Elements
+  const newCard = document.createElement('div');
+  const userImg = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const realName = document.createElement('h3');
+  const userName = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+
+  // Element textContent
+
+
+
+
+
+}
+
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
@@ -53,3 +84,13 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+// const api = axios.get('https://api.github.com/users/Adrian-Guadalupe');
+// console.log(api);
+
+
+
+
+
+
+  
