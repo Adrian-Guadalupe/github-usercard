@@ -69,7 +69,9 @@ const cardCreator = (user) => {
   realName.textContent = `${user.name}`;
   userName.textContent = `Username: ${user.login}`;
   location.textContent = `Location: ${user.location}`;
-  profLink.textContent = `Github: ${user.html_url}`;
+  profLink.href = user.html_url;
+  profLink.textContent = `${user.html_url}`;
+  profLink.target = '_blank';
   followers.textContent = `Followers: ${user.followers}`;
   following.textContent = `Following: ${user.following}`;
   bio.textContent = `Bio: ${user.bio}`;
