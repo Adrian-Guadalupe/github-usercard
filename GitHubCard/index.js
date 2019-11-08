@@ -3,14 +3,7 @@
            https://api.github.com/users/<your name>
 */
 
-axios
-  .get('https://api.github.com/users/Adrian-Guadalupe')
-  .then(responce => {
-    console.log(responce);
-  })
-  .catch(err => {
-    console.log('data not returned', err)
-  })
+
   
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -103,11 +96,36 @@ const cardCreator = (user) => {
   realName.classList.add('name');
   userName.classList.add('username');
 
-  
+  // Return Card
+  return card;
+};
+
+const cards = document.querySelector('.cards');
+const myData =
+axios
+  .get('https://api.github.com/users/Adrian-Guadalupe')
+  .then(responce => {
+    console.log(responce);
+    const myCard = cardCreator(myData);
+    cards.appendChild(myCard);
+  })
+  .catch(err => {
+    console.log('data not returned', err)
+  });
 
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
 
 /* List of LS Instructors Github username's: 
   tetondan
@@ -117,8 +135,6 @@ const cardCreator = (user) => {
   bigknell
 */
 
-// const api = axios.get('https://api.github.com/users/Adrian-Guadalupe');
-// console.log(api);
 
 
 
