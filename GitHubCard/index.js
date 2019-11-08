@@ -26,7 +26,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['JRodDvlpr', 'msteele11101', 'alesslongaretti', 'ianpaulfo', 'Heart8reak',];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -67,12 +67,12 @@ const cardCreator = (user) => {
   // Element Content
   userImg.src = user.avatar_url;
   realName.textContent = `${user.name}`;
-  userName.textContent = `${user.login}`;
-  location.textContent = `${user.location}`;
-  profLink.textContent = `${user.html_url}`;
-  followers.textContent = `${user.followers}`;
-  following.textContent = `${user.following}`;
-  bio.textContent =`${user.bio}`;
+  userName.textContent = `Username: ${user.login}`;
+  location.textContent = `Location: ${user.location}`;
+  profLink.textContent = `Github: ${user.html_url}`;
+  followers.textContent = `Followers: ${user.followers}`;
+  following.textContent = `Following: ${user.following}`;
+  bio.textContent = `Bio: ${user.bio}`;
 
 
   // Nesting of Elements
@@ -100,32 +100,26 @@ const cardCreator = (user) => {
   return card;
 };
 
+
 const cards = document.querySelector('.cards');
-const myData =
 axios
   .get('https://api.github.com/users/Adrian-Guadalupe')
-  .then(responce => {
-    console.log(responce);
-    const myCard = cardCreator(myData);
+  .then(response => {
+    const myCard = cardCreator(response.data);
     cards.appendChild(myCard);
   })
   .catch(err => {
     console.log('data not returned', err)
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  followersArray.forEach(follower => {
+    axios.get(`https://api.github.com/users/${follower}`)
+    .then(response => {
+      const followerCards = cardCreator(response.data);
+      cards.appendChild(followerCards);
+    })
+  });
+  
 
 /* List of LS Instructors Github username's: 
   tetondan
