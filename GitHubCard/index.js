@@ -103,6 +103,8 @@ const cardCreator = (user) => {
 };
 
 
+
+// Build and Show My Card
 const cards = document.querySelector('.cards');
 axios
   .get('https://api.github.com/users/Adrian-Guadalupe')
@@ -114,6 +116,8 @@ axios
     console.log('data not returned', err)
   });
 
+
+  // Build and Show Follower Cards
   followersArray.forEach(follower => {
     axios.get(`https://api.github.com/users/${follower}`)
     .then(response => {
@@ -123,6 +127,10 @@ axios
   });
   
 
+
+
+
+  
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
