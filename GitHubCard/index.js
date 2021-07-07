@@ -3,6 +3,8 @@
            https://api.github.com/users/<your name>
 */
 
+
+  
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -24,7 +26,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['JRodDvlpr', 'msteele11101', 'alesslongaretti', 'ianpaulfo', 'Heart8reak',];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -46,6 +48,89 @@ const followersArray = [];
 
 */
 
+const cardCreator = (user) => {
+
+  // Create Elements
+  const card = document.createElement('div');
+  const userImg = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const realName = document.createElement('h3');
+  const userName = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+
+
+  // Element Content
+  userImg.src = user.avatar_url;
+  realName.textContent = `${user.name}`;
+  userName.textContent = `Username: ${user.login}`;
+  location.textContent = `Location: ${user.location}`;
+  profLink.href = user.html_url;
+  profLink.textContent = `${user.html_url}`;
+  profLink.target = '_blank';
+  followers.textContent = `Followers: ${user.followers}`;
+  following.textContent = `Following: ${user.following}`;
+  bio.textContent = `Bio: ${user.bio}`;
+
+
+  // Nesting of Elements
+  card.appendChild(userImg);
+  card.appendChild(cardInfo);
+
+  cardInfo.appendChild(realName);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+  profile.appendChild(profLink);
+  
+
+  // Set Class Names
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  realName.classList.add('name');
+  userName.classList.add('username');
+
+  // Return Card
+  return card;
+};
+
+
+
+// Build and Show My Card
+const cards = document.querySelector('.cards');
+axios
+  .get('https://api.github.com/users/Adrian-Guadalupe')
+  .then(response => {
+    const myCard = cardCreator(response.data);
+    cards.appendChild(myCard);
+  })
+  .catch(err => {
+    console.log('data not returned', err)
+  });
+
+
+  // Build and Show Follower Cards
+  followersArray.forEach(follower => {
+    axios.get(`https://api.github.com/users/${follower}`)
+    .then(response => {
+      const followerCards = cardCreator(response.data);
+      cards.appendChild(followerCards);
+    })
+  });
+  
+
+
+
+
+  
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
@@ -53,3 +138,11 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+
+
+
+
+
+
+  
